@@ -1,0 +1,22 @@
+extends layout 
+
+block content 
+  div.game-section(style='text-align:center')
+    h1(style='margin-top:40px') Game Title: #{game.title}
+
+    div.img-cont
+      img(src=game.imgurl, alt="Game image", srcset="")
+
+    p(style='margin-top:40px;font-size:20px') Description: #{game.description} 
+
+    p(style='margin-top:20px;font-size:20px') Genre: 
+      a(href=game.genre.url) #{game.genre.name} 
+
+    p(style='margin-top:20px;font-size:20px') Price: #{game.cost} 
+
+    p(style='margin-top:20px;font-size:20px') Stock: #{game.stock}  
+
+    p(style='margin-top:20px;font-size:20px') 
+      a(href=game.url + '/delete', style='color:red') Delete game 
+    p(style='margin-top:20px;font-size:20px') 
+      a(href=game.url + '/update', style='color:green') Update game

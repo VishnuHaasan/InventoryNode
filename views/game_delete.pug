@@ -1,0 +1,18 @@
+extends layout 
+
+block content 
+  div(style='text-align:center')
+    h1(style='margin-top:20px') #{game.title} 
+
+    p(style='margin-top:20px;font-size:20px') #{game.description} 
+
+    p(style='margin-top:20px;font-size:20px') Do you really want to delete this game? 
+
+    form(method='POST' action='')
+      div.form-group 
+        input#gameid.form-control(name='gameid', type='hidden', value=game._id, required='true') 
+      div.form-group 
+        label(for='password') Administrator password:
+        input#password.form-control(name='password', type='text')
+      button.btn.btn-primary(type='submit') Delete 
+    p#pwd-error #{pwd}

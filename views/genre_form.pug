@@ -1,0 +1,27 @@
+extends layout 
+
+block content 
+  div(style='margin:100px')
+    h1=title 
+
+    form(method='POST' action='' enctype='multipart/form-data')
+      div.form-group 
+        label(for='name') Name: 
+        input#name.form-control(type='text' placeholder='Name' name='name' value=(undefined===genre ? '' : genre.name))
+      div.form-group
+        label(for='description') Description: 
+        input#description.form-control(type='text' placeholder='Description' name='description' value=(undefined===genre ? '' : genre.description))
+      div.form-group
+        label(for='image') Image: 
+        input#image.form-control(type='file' name='genre-img')
+      if isUpdate
+        div.form-group 
+          label(for='password') Admin Password: 
+          input#password.form-control(type='text' name='password')
+      button.btn.btn-primary(type='submit') Submit
+    if isUpdate
+      p#pwd-error #{pwd}
+    if errors 
+      ul 
+        for error in errors 
+          li!= error.msg 

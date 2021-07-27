@@ -1,0 +1,16 @@
+extends layout 
+
+block content 
+  div.gamelist-container(style='text-align:center')
+    div.list-title
+      h1= title 
+    if games.length 
+      each game in games 
+        div.card-cont 
+          div.cardimg-cont 
+            img(src=game.imgurl, alt="Game image", srcset="")
+          p.cardcont-ele #{game.title} 
+          p.cardcont-ele #{game.description} 
+          p.cardcont-ele 
+            a(href=game.url) Show more 
+           

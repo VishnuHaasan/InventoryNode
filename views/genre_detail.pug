@@ -1,0 +1,37 @@
+extends layout 
+
+block content 
+  div(style='text-align:center')
+    h1(style='margin-top:40px') Genre: #{genre.name} 
+    div.img-cont 
+      img(src=genre.imgurl, alt="genre picture", srcset="") 
+
+    p(style='margin-top:40px;font-size:20px') Description: #{genre.description} 
+
+
+    div(style='margin-left:auto;margin-right:auto')
+
+      if genre_games.length 
+        p(style='margin-top:20px;font-size:20px') Games 
+
+        dl 
+
+        each game in genre_games 
+          div.card-cont 
+            div.cardimg-cont 
+              img(src=game.imgurl, alt="Game image", srcset="")
+            p.cardcont-ele #{game.title} 
+            p.cardcont-ele #{game.description} 
+            p.cardcont-ele 
+              a(href=game.url) Show more 
+           
+
+      else 
+        p(style='margin-top:20px;font-size:20px') This genre has no games.
+
+    p(style='margin-top:20px;font-size:20px') 
+      a(href=genre.url + '/delete',style='color:red') Delete Genre 
+    p(style='margin-top:20px;font-size:20px') 
+      a(href=genre.url + '/update',style='color:green') Update Genre  
+    p(style='margin-top:20px;font-size:20px') 
+      a(href=genre.newgameurl,style='color:blue') New Game in this genre

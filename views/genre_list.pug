@@ -1,0 +1,19 @@
+extends layout 
+
+block content 
+  div.genrelist-container(style='text-align:center')
+    div.list-title
+      h1= title  
+    if genres.length
+      each genre in genres
+        div.card-cont 
+          div.cardimg-cont 
+            img(src=genre.imgurl, alt="Genre image", srcset="")
+          p.cardcont-ele #{genre.name} 
+          p.cardcont-ele #{genre.description} 
+          p.cardcont-ele 
+            a(href=genre.url) Show more 
+    
+    div
+      p(style='margin-top:20px')
+        a.new-links(href='/store/genre/create') Create a new genre

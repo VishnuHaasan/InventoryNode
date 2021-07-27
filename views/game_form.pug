@@ -1,0 +1,36 @@
+extends layout 
+
+block content 
+  div(style='margin:100px')
+    h1=title 
+
+    form(method='POST' action='' enctype='multipart/form-data') 
+      div.form-group 
+        label(for='title') Title: 
+        input#title.form-control(type='text' placeholder='Title' name='title' value=(undefined===game ? '' : game.title))
+      div.form-group 
+        label(for='description') Description: 
+        input#description.form-control(type='text' placeholder='Description' name='description' value=(undefined===game ? '' : game.description))
+      div.form-group
+        label(for='genre') Genre: 
+        input#genre.form-control(type='text' name='genre' value=(undefined===genre ? '' : genre.name) readonly)
+      div.form-group
+        label(for='cost') Price: 
+        input#cost.form-control(type='number' name='cost' value=(undefined===game ? '' : game.cost))
+      div.form-group
+        label(for='stock') Stock Quantity: 
+        input#stock.form-control(type='number' name='stock' value=value=(undefined===game ? '' : game.stock))
+      div.form-group
+        label(for='image') Image: 
+        input#image.form-control(type='file' name='game-img')
+      if isUpdate
+        div.form-group 
+          label(for='password') Admin Password: 
+          input#password.form-control(type='text' name='password')
+      button.btn.btn-primary(type='submit') Submit 
+    if isUpdate
+      p#pwd-error #{pwd}
+    if errors 
+      ul 
+        for error in errors 
+          li!= error.msg 

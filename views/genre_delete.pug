@@ -1,0 +1,24 @@
+extends layout 
+
+block content 
+  div(style='text-align:center')
+    h1(style='margin-top:40px') #{genre.name} 
+
+    if genre_games.length 
+
+      p(style='margin-top:20px;font-size:20px') Delete the following games before you want to delete this genre. 
+
+        each game in genre_games 
+          p(style='margin-top:20px;font-size:20px')
+            a(href=game.url) #{game.title}  
+    else  
+      p(style='margin-top:20px;font-size:20px') Do you really want to delete this genre? 
+
+      form(method='POST' action='')
+        div.form-group 
+          input#genreid.form-control(type='hidden', name='genreid', value=genre._id, required='true')
+        div.form-group 
+          label(for='password') Administrator password:
+          input#password.form-control(type='text', name='password')
+        button.btn.btn-primary(type='submit') Delete   
+      p#pwd-error #{pwd}
